@@ -1,5 +1,5 @@
 import dbConnect from '../../../lib/dbConnect'
-import Pet from '../../../models/Pet'
+import Product from '../../../models/Product'
 
 export default async function handler(req, res) {
   const {
@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET' /* Get a model by its ID */:
       try {
-        const pet = await Pet.findById(id)
+        const pet = await Product.findById(id)
         if (!pet) {
           return res.status(400).json({ success: false })
         }
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
 
     case 'PUT' /* Edit a model by its ID */:
       try {
-        const pet = await Pet.findByIdAndUpdate(id, req.body, {
+        const pet = await Product.findByIdAndUpdate(id, req.body, {
           new: true,
           runValidators: true,
         })
@@ -39,7 +39,7 @@ export default async function handler(req, res) {
 
     case 'DELETE' /* Delete a model by its ID */:
       try {
-        const deletedPet = await Pet.deleteOne({ _id: id })
+        const deletedPet = await Product.deleteOne({ _id: id })
         if (!deletedPet) {
           return res.status(400).json({ success: false })
         }
