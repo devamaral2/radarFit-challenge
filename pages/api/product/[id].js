@@ -1,56 +1,28 @@
-import dbConnect from '../../../lib/dbConnect'
-import Product from '../../../models/Product'
+/* eslint-disable consistent-return */
+import ProductFactory from '../../../api/factory/ProductFactory';
 
 export default async function handler(req, res) {
-  const {
-    query: { id },
-    method,
-  } = req
-
-  await dbConnect()
+  const { method } = req;
 
   switch (method) {
-    case 'GET' /* Get a model by its ID */:
-      try {
-        const pet = await Product.findById(id)
-        if (!pet) {
-          return res.status(400).json({ success: false })
-        }
-        res.status(200).json({ success: true, data: pet })
-      } catch (error) {
-        res.status(400).json({ success: false })
-      }
-      break
+    case 'GET':
+      ProductFactory.findById(req, res);
+      break;
 
-    case 'PUT' /* Edit a model by its ID */:
-      try {
-        const pet = await Product.findByIdAndUpdate(id, req.body, {
-          new: true,
-          runValidators: true,
-        })
-        if (!pet) {
-          return res.status(400).json({ success: false })
-        }
-        res.status(200).json({ success: true, data: pet })
-      } catch (error) {
-        res.status(400).json({ success: false })
-      }
-      break
+    case 'PUT':
+      ProductFactory.update(req, res);
+      break;
 
-    case 'DELETE' /* Delete a model by its ID */:
-      try {
-        const deletedPet = await Product.deleteOne({ _id: id })
-        if (!deletedPet) {
-          return res.status(400).json({ success: false })
-        }
-        res.status(200).json({ success: true, data: {} })
-      } catch (error) {
-        res.status(400).json({ success: false })
-      }
-      break
+    case 'PATCH':
+      ProductFactory.saveRemoveFavorite(req, res);
+      break;
+
+    case 'DELETE':
+      ProductFactory.destroy(req, res);
+      break;
 
     default:
-      res.status(400).json({ success: false })
-      break
+      res.status(500).json({ messange: 'Erro interno não identificado' });
+      break;
   }
 }
