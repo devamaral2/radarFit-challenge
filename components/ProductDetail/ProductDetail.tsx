@@ -18,7 +18,7 @@ export default function ProductDetail({ detailedProduct }:
         >
           Editar
         </button>
-        <BsTag className="icon__fav" />
+        {detailedProduct.favorite ? <BsTagFill className="icon__fav" /> : <BsTag className="icon__fav" />}
 
       </div>
     </div>

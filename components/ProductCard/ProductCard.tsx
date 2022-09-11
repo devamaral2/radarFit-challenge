@@ -1,16 +1,21 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/jsx-filename-extension */
 import { useEffect } from 'react';
-import { BsTag, BsTagFill } from 'react-icons/bs';
 import IProduct from '../../api/interfaces/IProduct';
+import FavoriteBtn from '../FavoriteBtn/FavoriteBtn';
 
-export default function ProductCard({ product, setDetailedProduct, i }:
+export default function ProductCard({
+  product, setDetailedProduct, i, setProducts,
+}:
   {
-    product: IProduct,
+    product: IProduct & { _id: string},
     // eslint-disable-next-line no-unused-vars
     setDetailedProduct: (prod: IProduct) => void,
-    i: number
+    i: number,
+    // eslint-disable-next-line no-unused-vars
+    setProducts: (products: IProduct[]) => void
   }) {
   useEffect(() => {
     if (i === 0) setDetailedProduct(product);
@@ -25,7 +30,11 @@ export default function ProductCard({ product, setDetailedProduct, i }:
         <h6>{product.produto}</h6>
         <span>{`R$ ${product.valor}`}</span>
       </div>
-      {product.favorite ? <BsTagFill className="icon__fav" /> : <BsTag className="icon__fav" />}
+      <FavoriteBtn
+        favorite={product.favorite}
+        id={product._id}
+        setProducts={setProducts}
+      />
     </div>
   );
 }
