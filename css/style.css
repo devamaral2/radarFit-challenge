@@ -180,3 +180,68 @@ li {
 .confirmation-box.show {
   display: block;
 }
+
+.navBar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color:darkcyan;
+  height: 100px;
+  width: 100vw;
+}
+
+.input__search {
+  margin: 1rem;
+  width: 100%;
+}
+
+.container__input__search {
+  display: flex;
+  width: 80%;
+  align-items: center;
+}
+
+.icon__search, .icon__add {
+  width: 30px;
+  height: 30px;
+}
+
+.container__main {
+  display: flex;
+}
+
+.container__list {
+  margin: 1rem;
+  width: 80%;
+}
+
+.container__product {
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  width: 80%;
+  min-height: 100px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 1rem;
+}
+
+.icon__fav {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+.container__card__info {
+  cursor: pointer;
+}
+
+.btn__edit {
+  width: 100px;
+  margin: 2rem;
+}
+
+.container__btn__details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

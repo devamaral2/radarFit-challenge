@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 export default function CreateProduct() {
   return (
-    <div>
+    <div className="container card container__creation">
       <h2>Novo Produto</h2>
       <div>
         <input type="text" />

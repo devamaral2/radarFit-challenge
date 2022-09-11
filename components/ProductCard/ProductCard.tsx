@@ -17,15 +17,15 @@ export default function ProductCard({ product, setDetailedProduct, i }:
   }, []);
 
   return (
-    <div className="container">
+    <div className="container container__product">
       <div
         onClick={() => setDetailedProduct(product)}
-        className="container"
+        className="container container__card__info"
       >
-        <h2>{product.produto}</h2>
-        <span>{product.valor}</span>
+        <h6>{product.produto}</h6>
+        <span>{`R$ ${product.valor}`}</span>
       </div>
-      {product.favorite ? <BsTagFill /> : <BsTag />}
+      {product.favorite ? <BsTagFill className="icon__fav" /> : <BsTag className="icon__fav" />}
     </div>
   );
 }

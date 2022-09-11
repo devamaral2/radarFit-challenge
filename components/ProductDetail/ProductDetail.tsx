@@ -1,22 +1,26 @@
 /* eslint-disable react/jsx-filename-extension */
-import { BsTag } from 'react-icons/bs';
-import IProduct from '../../api/interfaces/IProduct';
+import { BsTag, BsTagFill } from 'react-icons/bs';
+// import IProduct from '../../api/interfaces/IProduct';
 
 export default function ProductDetail({ detailedProduct }:
-  {detailedProduct: IProduct}) {
+  { detailedProduct: any }) {
   return (
-    <div className="container">
+    <div className="container card">
       <div>
         <h2>{detailedProduct.produto}</h2>
-        <span>{detailedProduct.valor}</span>
+        <span>{`R$ ${detailedProduct.valor}`}</span>
         <p>{detailedProduct.descricao}</p>
       </div>
-      <button
-        type="button"
-      >
-        Editar
-      </button>
-      <BsTag />
+      <div className="container container__btn__details">
+        <button
+          className="btn btn-primary btn__edit"
+          type="button"
+        >
+          Editar
+        </button>
+        <BsTag className="icon__fav" />
+
+      </div>
     </div>
   );
 }
